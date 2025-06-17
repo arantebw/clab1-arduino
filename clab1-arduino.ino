@@ -1,6 +1,6 @@
 const int sensorPin = A0;    // Analog pin connected to the nail sensor
 const int ledPin = 13;       // Digital pin connected to the LED
-const int threshold = 300;   // Adjust this based on your testing
+const int threshold = 400;   // Dry (< 400) and wet (>= 400) threshold
 
 void setup() {
   pinMode(ledPin, OUTPUT);
@@ -13,11 +13,11 @@ void loop() {
   Serial.println(value);
 
   if (value < threshold) {
-    // Dry condition — turn LED ON
-    digitalWrite(ledPin, HIGH);
+    digitalWrite(ledPin, HIGH); // Dry condition — turn LED ON
+    Serial.println("Feed me!");
   } else {
-    // Wet enough — turn LED OFF
-    digitalWrite(ledPin, LOW);
+    digitalWrite(ledPin, LOW); // Wet enough — turn LED OFF
+    Serial.println("Thank you, Billy!");
   }
 
   delay(1000);
